@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText editText;
     private EditText editText2;
     private Button submit;
+    private TextView textView;
     SQLiteDatabase db;
 
 
@@ -65,10 +67,12 @@ public class MainActivity extends AppCompatActivity {
         editText = (EditText)findViewById(R.id.editText);
         editText2 = (EditText)findViewById(R.id.editText2);
         submit = (Button)findViewById(R.id.submit);
+        textView = (TextView)findViewById(R.id.textView);
         db = openOrCreateDatabase("LoginDB", Context.MODE_PRIVATE,null);
         db.execSQL("CREATE TABLE IF NOT EXISTS login(name VARCHAR,password VARCHAR)");
 
-        submit.setOnClickListener(new View.OnClickListener() {
+
+        textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String name = editText.getText().toString();
